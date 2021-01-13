@@ -1,0 +1,77 @@
+! A utility code for NRLMOL/FLOSIC code
+! This code convert spin unpolarized WFOUT file into
+! spin polarized WFOUT format (WFOUT2).
+        program main
+! SUBROUTINE WFOUT ORIGINAL VERSION BY MARK R PEDERSON
+
+integer :: I, I_OCC, ITOT, ISPN, NSPN, IWF, NWF, NWFS(1:2), I_REP, N_REP
+integer,allocatable :: N_OCC(:,:), NS_TOT(:)
+real*8,allocatable :: EVLOCC(:), OCCUPANCY(:,:), PSI_COEF(:,:,:,:)
+!Copy two values from params
+integer,parameter :: MAX_VIRT_PER_SYM =  2100
+integer,parameter :: NDH = 1000
+
+OPEN(98,FILE='WFOUT',FORM='UNFORMATTED',STATUS='UNKNOWN')
+REWIND(98)
+READ(98) NSPN
+READ(98) NWF,(NWFS(ISPN),ISPN=1,NSPN)
+allocate(EVLOCC(NWF))
+READ(98) (EVLOCC(IWF), IWF=1,NWF)
+!ITOT=0
+READ(98) N_REP
+allocate(N_OCC(N_REP,2), NS_TOT(N_REP))
+allocate(OCCUPANCY(MAX_VIRT_PER_SYM*N_REP,2))
+allocate(PSI_COEF(NDH,MAX_VIRT_PER_SYM,N_REP,2))
+
+DO ISPN=1,NSPN
+  ITOT=0
+  DO I_REP=1,N_REP
+    READ(98) N_OCC(I_REP,ISPN),NS_TOT(I_REP)
+    READ(98) (OCCUPANCY(I_OCC+ITOT,ISPN), I_OCC=1,N_OCC(I_REP,ISPN))
+    ITOT=ITOT+N_OCC(I_REP,ISPN)
+    DO IWF=1,N_OCC(I_REP,ISPN)
+      READ(98) (PSI_COEF(I,IWF,I_REP,ISPN), I=1,NS_TOT(I_REP))
+    END DO
+  END DO
+END DO
+
+CLOSE(98)
+
+!Copy spin up to spin down
+N_OCC(:,2) = N_OCC(:,1)
+PSI_COEF(:,:,:,2) = PSI_COEF(:,:,:,1)
+OCCUPANCY(:,2) = OCCUPANCY(:,1)
+
+NSPN=2
+NWF=NWF*2
+NWFS(2)=NWFS(1)
+
+!Now write to the file
+OPEN(98,FILE='WFOUT2',FORM='UNFORMATTED',STATUS='UNKNOWN')
+REWIND(98)
+WRITE(98) NSPN
+WRITE(98) NWF,(NWFS(ISPN),ISPN=1,NSPN)
+WRITE(98) (EVLOCC(IWF), IWF=1,NWF)
+!ITOT=0
+WRITE(98) N_REP
+DO ISPN=1,NSPN
+  ITOT=0
+  DO I_REP=1,N_REP
+    WRITE(98) N_OCC(I_REP,ISPN),NS_TOT(I_REP)
+    WRITE(98) (OCCUPANCY(I_OCC+ITOT,ISPN), I_OCC=1,N_OCC(I_REP,ISPN))
+    ITOT=ITOT+N_OCC(I_REP,ISPN)
+    DO IWF=1,N_OCC(I_REP,ISPN)
+      WRITE(98) (PSI_COEF(I,IWF,I_REP,ISPN), I=1,NS_TOT(I_REP))
+    END DO
+  END DO
+END DO
+
+!Done
+close(98)
+
+deallocate(PSI_COEF)
+deallocate(OCCUPANCY)
+deallocate(N_OCC, NS_TOT)
+deallocate(EVLOCC)
+!RETURN
+END program main
