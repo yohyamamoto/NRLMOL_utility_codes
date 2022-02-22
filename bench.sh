@@ -8,24 +8,24 @@ dBH="BH6"
 unitconversion=(627.509608)
 
 #atom energy
-e1=$( awk '{print $2}' ./$datoms/1/fande.out )
-e2=$( awk '{print $2}' ./$datoms/2/fande.out )
-e3=$( awk '{print $2}' ./$datoms/3/fande.out )
-e4=$( awk '{print $2}' ./$datoms/4/fande.out )
-e5=$( awk '{print $2}' ./$datoms/5/fande.out )
-e6=$( awk '{print $2}' ./$datoms/6/fande.out )
-e7=$( awk '{print $2}' ./$datoms/7/fande.out )
-e8=$( awk '{print $2}' ./$datoms/8/fande.out )
-e9=$( awk '{print $2}' ./$datoms/9/fande.out )
-e10=$( awk '{print $2}' ./$datoms/10/fande.out )
-e11=$( awk '{print $2}' ./$datoms/11/fande.out )
-e12=$( awk '{print $2}' ./$datoms/12/fande.out )
-e13=$( awk '{print $2}' ./$datoms/13/fande.out )
-e14=$( awk '{print $2}' ./$datoms/14/fande.out )
-e15=$( awk '{print $2}' ./$datoms/15/fande.out )
-e16=$( awk '{print $2}' ./$datoms/16/fande.out )
-e17=$( awk '{print $2}' ./$datoms/17/fande.out )
-e18=$( awk '{print $2}' ./$datoms/18/fande.out )
+e1=$( awk '{print $2}' ./$datoms/1/fande.out | tail -1 )
+e2=$( awk '{print $2}' ./$datoms/2/fande.out | tail -1 )
+e3=$( awk '{print $2}' ./$datoms/3/fande.out | tail -1 )
+e4=$( awk '{print $2}' ./$datoms/4/fande.out | tail -1 )
+e5=$( awk '{print $2}' ./$datoms/5/fande.out | tail -1 )
+e6=$( awk '{print $2}' ./$datoms/6/fande.out | tail -1 )
+e7=$( awk '{print $2}' ./$datoms/7/fande.out | tail -1 )
+e8=$( awk '{print $2}' ./$datoms/8/fande.out | tail -1 )
+e9=$( awk '{print $2}' ./$datoms/9/fande.out | tail -1 )
+e10=$( awk '{print $2}' ./$datoms/10/fande.out | tail -1 )
+e11=$( awk '{print $2}' ./$datoms/11/fande.out | tail -1 )
+e12=$( awk '{print $2}' ./$datoms/12/fande.out | tail -1 )
+e13=$( awk '{print $2}' ./$datoms/13/fande.out | tail -1 )
+e14=$( awk '{print $2}' ./$datoms/14/fande.out | tail -1 )
+e15=$( awk '{print $2}' ./$datoms/15/fande.out | tail -1 )
+e16=$( awk '{print $2}' ./$datoms/16/fande.out | tail -1 )
+e17=$( awk '{print $2}' ./$datoms/17/fande.out | tail -1 )
+e18=$( awk '{print $2}' ./$datoms/18/fande.out | tail -1 )
 
 
 #reference energies
@@ -81,12 +81,12 @@ echo "MSE" $MSE
 
 
 #molecule energy
-e128=$( awk '{print $2}' ./$dAE/128/fande.out )
-e129=$( awk '{print $2}' ./$dAE/129/fande.out )
-e130=$( awk '{print $2}' ./$dAE/130/fande.out )
-e131=$( awk '{print $2}' ./$dAE/131/fande.out )
-e132=$( awk '{print $2}' ./$dAE/132/fande.out )
-e133=$( awk '{print $2}' ./$dAE/133/fande.out )
+e128=$( awk '{print $2}' ./$dAE/128/fande.out | tail -1 )
+e129=$( awk '{print $2}' ./$dAE/129/fande.out | tail -1 )
+e130=$( awk '{print $2}' ./$dAE/130/fande.out | tail -1 )
+e131=$( awk '{print $2}' ./$dAE/131/fande.out | tail -1 )
+e132=$( awk '{print $2}' ./$dAE/132/fande.out | tail -1 )
+e133=$( awk '{print $2}' ./$dAE/133/fande.out | tail -1 )
 
 #echo "energy of molecules:"
 #echo $e128 $e129 $e130 $e131 $e132 $e133
@@ -120,16 +120,16 @@ echo "MSE" $MSE
 
 
 #molecule energy
-eCH3=$( awk '{print $2}' ./$dBH/CH3/fande.out )
-eCH4=$( awk '{print $2}' ./$dBH/CH4/fande.out )
-eH2=$( awk '{print $2}' ./$dBH/H2/fande.out )
-eH2O=$( awk '{print $2}' ./$dBH/H2O/fande.out )
-eH2S=$( awk '{print $2}' ./$dBH/H2S/fande.out )
-eHS=$( awk '{print $2}' ./$dBH/HS/fande.out )
-eOH=$( awk '{print $2}' ./$dBH/OH/fande.out )
-esaddle1=$( awk '{print $2}' ./$dBH/saddle1/fande.out )
-esaddle2=$( awk '{print $2}' ./$dBH/saddle2/fande.out )
-esaddle3=$( awk '{print $2}' ./$dBH/saddle3/fande.out )
+eCH3=$( awk '{print $2}' ./$dBH/CH3/fande.out | tail -1 )
+eCH4=$( awk '{print $2}' ./$dBH/CH4/fande.out | tail -1 )
+eH2=$( awk '{print $2}' ./$dBH/H2/fande.out | tail -1 )
+eH2O=$( awk '{print $2}' ./$dBH/H2O/fande.out | tail -1 )
+eH2S=$( awk '{print $2}' ./$dBH/H2S/fande.out | tail -1 )
+eHS=$( awk '{print $2}' ./$dBH/HS/fande.out | tail -1 )
+eOH=$( awk '{print $2}' ./$dBH/OH/fande.out | tail -1 )
+esaddle1=$( awk '{print $2}' ./$dBH/saddle1/fande.out | tail -1 )
+esaddle2=$( awk '{print $2}' ./$dBH/saddle2/fande.out | tail -1 )
+esaddle3=$( awk '{print $2}' ./$dBH/saddle3/fande.out | tail -1 )
 
 
 #reference energies
