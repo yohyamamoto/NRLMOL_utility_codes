@@ -4,21 +4,21 @@ datoms="atoms"
 dmols="BH6"
 
 #molecule energy
-eCH3=$( awk '{print $2}' ./$dmols/CH3/fande.out )
-eCH4=$( awk '{print $2}' ./$dmols/CH4/fande.out )
-eH2=$( awk '{print $2}' ./$dmols/H2/fande.out )
-eH2O=$( awk '{print $2}' ./$dmols/H2O/fande.out )
-eH2S=$( awk '{print $2}' ./$dmols/H2S/fande.out )
-eHS=$( awk '{print $2}' ./$dmols/HS/fande.out )
-eOH=$( awk '{print $2}' ./$dmols/OH/fande.out )
-esaddle1=$( awk '{print $2}' ./$dmols/saddle1/fande.out )
-esaddle2=$( awk '{print $2}' ./$dmols/saddle2/fande.out )
-esaddle3=$( awk '{print $2}' ./$dmols/saddle3/fande.out )
+eCH3=$( awk '{print $2}' ./$dmols/CH3/fande.out | tail -1 )
+eCH4=$( awk '{print $2}' ./$dmols/CH4/fande.out | tail -1 )
+eH2=$( awk '{print $2}' ./$dmols/H2/fande.out | tail -1 )
+eH2O=$( awk '{print $2}' ./$dmols/H2O/fande.out | tail -1 )
+eH2S=$( awk '{print $2}' ./$dmols/H2S/fande.out | tail -1 )
+eHS=$( awk '{print $2}' ./$dmols/HS/fande.out | tail -1 )
+eOH=$( awk '{print $2}' ./$dmols/OH/fande.out | tail -1 )
+esaddle1=$( awk '{print $2}' ./$dmols/saddle1/fande.out | tail -1 )
+esaddle2=$( awk '{print $2}' ./$dmols/saddle2/fande.out | tail -1 )
+esaddle3=$( awk '{print $2}' ./$dmols/saddle3/fande.out | tail -1 )
 
 
 #atom energy
-eH=$(  awk '{print $2}' ./$datoms/1/fande.out )
-eO=$(  awk '{print $2}' ./$datoms/8/fande.out )
+eH=$(  awk '{print $2}' ./$datoms/1/fande.out | tail -1 )
+eO=$(  awk '{print $2}' ./$datoms/8/fande.out | tail -1 )
 
 
 #reference energies
