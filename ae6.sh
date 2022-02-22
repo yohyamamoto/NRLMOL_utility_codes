@@ -4,22 +4,22 @@ datoms="atoms"
 dmols="AE6"
 
 #molecule energy
-e128=$( awk '{print $2}' ./$dmols/128/fande.out )
-e129=$( awk '{print $2}' ./$dmols/129/fande.out )
-e130=$( awk '{print $2}' ./$dmols/130/fande.out )
-e131=$( awk '{print $2}' ./$dmols/131/fande.out )
-e132=$( awk '{print $2}' ./$dmols/132/fande.out )
-e133=$( awk '{print $2}' ./$dmols/133/fande.out )
+e128=$( awk '{print $2}' ./$dmols/128/fande.out | tail -1 )
+e129=$( awk '{print $2}' ./$dmols/129/fande.out | tail -1 )
+e130=$( awk '{print $2}' ./$dmols/130/fande.out | tail -1 )
+e131=$( awk '{print $2}' ./$dmols/131/fande.out | tail -1 )
+e132=$( awk '{print $2}' ./$dmols/132/fande.out | tail -1 )
+e133=$( awk '{print $2}' ./$dmols/133/fande.out | tail -1 )
 
 #echo "energy of molecules:"
 #echo $e128 $e129 $e130 $e131 $e132 $e133
 
 #atom energy
-e1=$(  awk '{print $2}' ./$datoms/1/fande.out )
-e6=$(  awk '{print $2}' ./$datoms/6/fande.out )
-e8=$(  awk '{print $2}' ./$datoms/8/fande.out )
-e14=$( awk '{print $2}' ./$datoms/14/fande.out )
-e16=$( awk '{print $2}' ./$datoms/16/fande.out )
+e1=$(  awk '{print $2}' ./$datoms/1/fande.out | tail -1 )
+e6=$(  awk '{print $2}' ./$datoms/6/fande.out | tail -1 )
+e8=$(  awk '{print $2}' ./$datoms/8/fande.out | tail -1 )
+e14=$( awk '{print $2}' ./$datoms/14/fande.out | tail -1 )
+e16=$( awk '{print $2}' ./$datoms/16/fande.out | tail -1 )
 
 #echo "energy of atoms:"
 #echo $e1 $e6 $e8 $e14 $e16
