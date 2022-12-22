@@ -1,0 +1,31 @@
+program main
+
+integer :: MDHTOT,MSPN,I,ISPN
+real(8),allocatable :: HSTOR(:)
+character(7) :: FILENAME
+character(12) :: FOUT
+
+
+PRINT *,'Enter file name'
+READ(*,*) FILENAME
+WRITE(FOUT,'(2A)') FILENAME, '.read'
+
+OPEN(19,FILE=FILENAME, FORM='UNFORMATTED',STATUS='OLD')
+OPEN(21,FILE=FOUT,     FORM='FORMATTED',  STATUS='NEW')
+
+READ(19)    MDHTOT
+WRITE(21,*) MDHTOT
+
+ALLOCATE(HSTOR(MDHTOT))
+
+DO ISPN=1,1
+  READ(19)   (HSTOR(I),I=1,MDHTOT)
+  WRITE(21,*)(HSTOR(I),I=1,MDHTOT)
+END DO
+
+DEALLOCATE(HSTOR)
+CLOSE(19)
+CLOSE(21)
+
+
+end program main
