@@ -12,6 +12,10 @@ for ((i=1;i<=eup;i++)); do
   echo -n "1 "
 done
 echo ""
+if [ $edn -lt 0 ]
+then
+  edn=${edn#-}
+fi
 echo $edn
 #for i in {1..'"$edn"'}; do echo "1 " ;done
 for ((i=1;i<=edn;i++)); do
