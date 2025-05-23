@@ -3,7 +3,8 @@
 #up (down) FOD is shown as X (z)
 #Usage:  perl frmidt2xyz.pl < FRMIDT.in > xyz.out
 
-$bohr = 0.5291772109217;
+#$bohr = 0.5291772109217;   #in angstrom
+$bohr = 1.000;    #in bohr radius
 
 $LineNum=1;
 while (defined($line = <>)) {
@@ -16,7 +17,7 @@ while (defined($line = <>)) {
    $upfod = $x;
    $dnfod = $y;
    $tot = $upfod+$dnfod;
-   print "\t$tot\n up fod: $x down fod: $y\n" } 
+   print "\t$tot\n up fod: $x down fod: $y in bohr\n" } 
   elsif( $LineNum > 1) {
     #print "$name,$x $y $z;"; 
     #$AN = name2AN($name);
@@ -27,7 +28,7 @@ while (defined($line = <>)) {
       print "X\t$x\t$y\t$z \n"
     }
     else {
-      print "Z\t$x\t$y\t$z \n";
+      print "H\t$x\t$y\t$z \n";
     }
   }
   $LineNum=$LineNum+1;
