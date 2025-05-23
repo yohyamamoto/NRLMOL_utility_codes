@@ -10,6 +10,10 @@ while (defined($line = <>)) {
   #join ' ', split ' ', $text;
   $line = join ' ', split ' ', $line;
   my ($name, $x, $y, $z) = split / /, $line;
+  $x =~ s/D/E/g;
+  $y =~ s/D/E/g;
+  $z =~ s/D/E/g;
+
   if( $LineNum == 1 ) { print "Z   Number of inequivalent atoms\n" } 
   elsif( $LineNum == 2) {
     $ncharge = $name;

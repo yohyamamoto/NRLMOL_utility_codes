@@ -7,6 +7,10 @@ while (defined($line = <>)) {
   #join ' ', split ' ', $text;
   $line = join ' ', split ' ', $line;
   my ($x, $y, $z, $AN, $tmp1, $tmp2) = split / /, $line;
+  $x =~ s/D/E/g;
+  $y =~ s/D/E/g;
+  $z =~ s/D/E/g;
+
   if( $LineNum == 3 ) { 
     my ($numatoms) = split / /,$line;  
     $maxline=$numatoms+4;

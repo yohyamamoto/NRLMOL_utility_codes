@@ -13,6 +13,9 @@ while (defined($line = <>)) {
   $line = join ' ', split ' ', $line;
   #my ($name, $x, $y, $z) = split / /, $line;
   my ($x, $y, $z) = split / /, $line;
+  $x =~ s/D/E/g;
+  $y =~ s/D/E/g;
+  $z =~ s/D/E/g;
   if( $LineNum == 1 ) { 
    $upfod = $x;
    $dnfod = $y;
